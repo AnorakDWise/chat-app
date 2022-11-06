@@ -19,7 +19,7 @@ export default function Home() {
 
 const Container = styled.div`
   margin: 0 auto;
-  width: 99vw;
+  width: 100vw;
   height: 100vh;
   background: green;
   display: flex;

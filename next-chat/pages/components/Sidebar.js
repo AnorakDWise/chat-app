@@ -230,7 +230,7 @@ export default Sidebar;
 
 const Container = styled.div`
   margin: 0 auto;
-  width: 20vw;
+  width: 28.5vw;
   height: 90vh;
   border-radius: 1.5vw;
   display: flex;
@@ -280,7 +280,7 @@ const Search = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 12.5vw;
+  width: 20vw;
   padding-top: 0.5vh;
   padding-bottom: 0.5vh;
   padding-left: 1vw;
