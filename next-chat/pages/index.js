@@ -1,14 +1,28 @@
 import Head from "next/head";
 import "@fontsource/space-grotesk";
+import Sidebar from "./components/Sidebar";
+import styled from "styled-components";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="m-auto w-screen h-screen bg-stone-900">
       <Head>
-        <title>Next Chat</title>
+        <title>NextChat</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Testgg</h1>
+      <Container>
+        <Sidebar />
+      </Container>
     </div>
   );
 }
+
+const Container = styled.div`
+  margin: 0 auto;
+  width: 99vw;
+  height: 100vh;
+  background: green;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;

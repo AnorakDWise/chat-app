@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Space Grotesk", sans-serif;
+}
+
+.animate {
+  transition: all 0.2s ease-in-out;
+}
+
+.animate:hover {
+  transition: all 0.2s ease-in-out;
 }
