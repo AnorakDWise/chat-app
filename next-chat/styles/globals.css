@@ -2,18 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Space Grotesk", sans-serif;
-}
-
 .animate {
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out all !important;
 }
 
 .animate:hover {
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out all !important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::placeholder {
+  transition: 0.2s ease-in-out all !important;
+}
+
+.avatarSize {
+  width: 3vw !important;
+  height: 3vw !important;
 }
