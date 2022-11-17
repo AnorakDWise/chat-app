@@ -13,7 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={SpaceGrotesk.className + " scroll-smooth"}>
+    <html
+      className={SpaceGrotesk.className + " scroll-smooth overflow-x-hidden"}
+    >
       <head />
       <body className="bg-stone-900 select-none">
         <Header />
