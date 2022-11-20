@@ -1,8 +1,10 @@
 "use client";
 
+import { signOut } from "next-auth/react";
+
 const LogOutButton = () => {
   return (
-    <button onClick={() => console.log("TBD")}>
+    <button onClick={() => signOut()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"

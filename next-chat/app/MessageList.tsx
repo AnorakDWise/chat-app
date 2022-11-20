@@ -7,7 +7,11 @@ import MessageComponent from "./MessageComponent";
 import { useEffect } from "react";
 import { clientPusher } from "../pusher";
 
-const MessageList = () => {
+type Props = {
+  initialMessage: Message[];
+};
+
+const MessageList = ({ initialMessage }: Props) => {
   const {
     data: messages,
     error,
@@ -37,7 +41,7 @@ const MessageList = () => {
 
   return (
     <div className="m-auto w-5/12 text-stone-200 text-plain flex flex-col justify-start mt-[3vh] mb-[7vh]">
-      {messages?.map((message) => (
+      {(messages || initialMessage).map((message) => (
         <MessageComponent key={message.id} message={message} />
       ))}
     </div>

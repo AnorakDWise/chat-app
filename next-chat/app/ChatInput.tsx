@@ -5,13 +5,18 @@ import { v4 as uuid } from "uuid";
 import { Message } from "../typings";
 import useSWR from "swr";
 import fetcher from "../utils/fetchMessages";
+import { unstable_getServerSession } from "next-auth";
 
-const ChatInput = () => {
+type Props = {
+  session: Awaited<ReturnType<typeof unstable_getServerSession>>;
+};
+
+const ChatInput = (session: Props) => {
   const [input, setInput] = useState("");
   const { data: messages, error, mutate } = useSWR("/api/getMessages", fetcher);
   const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!input) return;
+    if (!input || !session.session) return;
     const messageToSend = input;
     setInput("");
     const id = uuid();
@@ -19,10 +24,9 @@ const ChatInput = () => {
       id,
       message: messageToSend,
       created_at: Date.now(),
-      username: "Gregy",
-      profilePic:
-        "https://scontent-cdg2-1.xx.fbcdn.net/v/t39.30808-6/315900663_102715459334921_85022070233134515_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=nJRlkL0nVHAAX_sw1cz&_nc_ht=scontent-cdg2-1.xx&oh=00_AfAkkBxLtD2HvAD9ENenSHUVLECCCwCheajHaYV_bLsn4Q&oe=637AF711",
-      email: "gregory442005@gmail.com",
+      username: session?.session?.user?.name!,
+      profilePic: session?.session?.user?.image!,
+      email: session?.session?.user?.email!,
     };
     const uploadMessageToUpstash = async () => {
       const data = await fetch("/api/addMessage", {
@@ -48,8 +52,9 @@ const ChatInput = () => {
       <input
         type="text"
         value={input}
+        disabled={!session.session}
         onChange={(e) => setInput(e.target.value)}
-        className="bg-stone-800 hover:bg-stone-200 focus:bg-stone-200 w-4/12 px-[1vw] py-[1vh] rounded-ease text-plain outline-none placeholder:text-stone-700 hover:placeholder:text-stone-400 focus:placeholder:text-stone-400 animate text-stone-900 font-normal drop-shadow-xl hover:drop-shadow-2xl focus:drop-shadow-2xl"
+        className="bg-stone-800 hover:bg-stone-200 focus:bg-stone-200 w-4/12 px-[1vw] py-[1vh] rounded-ease text-plain outline-none placeholder:text-stone-700 hover:placeholder:text-stone-400 focus:placeholder:text-stone-400 animate text-stone-900 font-normal drop-shadow-xl hover:drop-shadow-2xl focus:drop-shadow-2xl disabled:bg-stone-800 disabled:placeholder:text-stone-700 disabled:cursor-not-allowed"
         placeholder="Tapez votre message ici..."
       />
       <button type="submit" className="group" disabled={!input}>

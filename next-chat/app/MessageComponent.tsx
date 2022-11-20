@@ -1,12 +1,19 @@
 import { Message } from "../typings";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import TimeAgo from "react-timeago";
+import frenchStrings from "react-timeago/lib/language-strings/fr";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+
+const formatter = buildFormatter(frenchStrings);
 
 type Props = {
   message: Message;
 };
 
 const MessageComponent = ({ message }: Props) => {
-  const isUser = false;
+  const { data: session } = useSession();
+  const isUser = session?.user?.email === message.email;
 
   return (
     <div
@@ -45,7 +52,7 @@ const MessageComponent = ({ message }: Props) => {
               isUser
                 ? "bg-stone-800 text-stone-200"
                 : "bg-stone-200 text-stone-900"
-            } font-normal px-[0.5vw] py-[0.5vh] rounded-ease break-words`}
+            } font-normal px-[0.75vw] py-[0.5vh] rounded-ease break-words`}
           >
             {message.message}
           </p>
@@ -54,7 +61,10 @@ const MessageComponent = ({ message }: Props) => {
               isUser && "pr-[0.5vw]"
             }`}
           >
-            Enovyé il y a {message.created_at}
+            <TimeAgo
+              date={new Date(message.created_at)}
+              formatter={formatter}
+            />
           </p>
         </div>
       </div>

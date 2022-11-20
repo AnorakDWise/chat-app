@@ -7,7 +7,9 @@ module.exports = {
   ],
   theme: {
     fontSize: {
+      fuckingHuge: "4vw",
       big: "2vw",
+      medium: "1.5vw",
       plain: "1vw",
       small: "0.75vw",
     },
