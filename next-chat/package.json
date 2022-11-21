@@ -9,7 +9,7 @@
     "@next/font": "^13.0.3",
     "encoding": "^0.1.13",
     "ioredis": "^5.2.4",
-    "next": "13.0.3",
+    "next": "latest",
     "next-auth": "^4.17.0",
     "pusher": "^5.1.1-beta",
     "pusher-js": "^7.5.0",
