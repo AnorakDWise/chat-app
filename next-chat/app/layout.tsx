@@ -18,6 +18,7 @@ export default async function RootLayout({
     >
       <head />
       <body className="bg-stone-900 select-none">
+        {/* @ts-expect-error Server Component */}
         <Header />
         {children}
       </body>
