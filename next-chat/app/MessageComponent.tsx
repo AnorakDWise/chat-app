@@ -2,10 +2,10 @@ import { Message } from "../typings";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import TimeAgo from "react-timeago";
-import frenchStrings from "react-timeago/lib/language-strings/fr";
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+//import frenchStrings from "react-timeago/lib/language-strings/fr";
+//import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
-const formatter = buildFormatter(frenchStrings);
+//const formatter = buildFormatter(frenchStrings);
 
 type Props = {
   message: Message;
@@ -63,7 +63,7 @@ const MessageComponent = ({ message }: Props) => {
           >
             <TimeAgo
               date={new Date(message.created_at)}
-              formatter={formatter}
+              //formatter={formatter}
             />
           </p>
         </div>
