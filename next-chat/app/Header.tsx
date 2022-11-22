@@ -16,6 +16,7 @@ const Header = async () => {
               height={100}
               className="avatarSize rounded-full"
               src={session.user?.image!}
+              alt="Avatar"
             />
             <div className="text-plainflex justify-center items-start flex-col">
               <p className="font-light text-stone-300">Salut,&nbsp;</p>
