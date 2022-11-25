@@ -24,3 +24,15 @@
   width: 3vw !important;
   height: 3vw !important;
 }
+
+@media (max-width: 640px) {
+  .avatarSize {
+    width: 8vw !important;
+    height: 8vw !important;
+  }
+
+  .spinningWheel {
+    width: 6vw !important;
+    height: 6vw !important;
+  }
+}
